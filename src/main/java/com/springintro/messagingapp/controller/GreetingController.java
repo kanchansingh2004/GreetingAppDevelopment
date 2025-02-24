@@ -68,13 +68,15 @@ public class GreetingController {
     public UserEntity saveGreeting(@RequestBody String message) {
         return userService.saveMessage(message);
     }
+
+    //UC-06 List all greeting messages
     //retrieves all stored greeting messages
     @GetMapping
     public List<UserEntity> getAllGreetings() {
         return userService.getAllMessages();
     }
 
-    //UC_5-endpoint to fetch a greeting message by ID
+    //UC-05 endpoint to fetch a greeting message by ID
     @GetMapping("/{id}")
     public Optional<UserEntity> getGreetingById(@PathVariable Long id) {
         return userService.getMessageById(id);
