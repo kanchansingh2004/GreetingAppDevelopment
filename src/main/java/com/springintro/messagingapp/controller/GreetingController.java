@@ -1,10 +1,14 @@
 package com.springintro.messagingapp.controller;
 
-import com.springintro.messagingapp.service.UserService;
+import com.springintro.messagingapp.service.*;
 import com.springintro.messagingapp.userdetails.UserDetails;
+import com.springintro.messagingapp.userentity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -56,5 +60,17 @@ public class GreetingController {
     @PostMapping("/postGreet")
     public String getGreetingWithName(@RequestBody UserDetails request){
         return userService.greetingWithName(request.getFirstName(),request.getLastName());
+    }
+
+    //UC-04 Ability for the Greeting App to save the Greeting Message in the Repository
+    //saves a new greeting message in the database
+    @PostMapping
+    public UserEntity saveGreeting(@RequestBody String message) {
+        return userService.saveMessage(message);
+    }
+    //retrieves all stored greeting messages
+    @GetMapping
+    public List<UserEntity> getAllGreetings() {
+        return userService.getAllMessages();
     }
 }
