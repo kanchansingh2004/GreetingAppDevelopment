@@ -1,10 +1,10 @@
 package com.springintro.messagingapp.controller;
 
 import com.springintro.messagingapp.service.UserService;
+import com.springintro.messagingapp.userdetails.UserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.*;
-import com.springintro.messagingapp.service.UserService;
 
 
 @RestController
@@ -49,6 +49,12 @@ public class GreetingController {
     @GetMapping("/getGreeting")
     //calls the getGreeting method from UserService to get the greeting message
     public String getMessage(){
-        return UserService.getGreeting();
+        return userService.getGreeting();
+    }
+
+    //UC-03 Display Greeting message with given input
+    @PostMapping("/postGreet")
+    public String getGreetingWithName(@RequestBody UserDetails request){
+        return userService.greetingWithName(request.getFirstName(),request.getLastName());
     }
 }
