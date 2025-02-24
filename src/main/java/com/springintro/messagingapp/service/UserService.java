@@ -32,7 +32,7 @@ public class UserService {
         }
     }
 
-    //UC_4-save the greeting message in the repository
+    //UC-04 save the greeting message in the repository
     //injects UserRepository into this service
     @Autowired
     private UserRepo repository;
@@ -40,6 +40,7 @@ public class UserService {
     public UserEntity saveMessage(String message) {
         return repository.save(new UserEntity(message));
     }
+    //uC-06 list all the greeting messages
     //retrieves all greeting messages from the database
     public List<UserEntity> getAllMessages() {
         return repository.findAll();
