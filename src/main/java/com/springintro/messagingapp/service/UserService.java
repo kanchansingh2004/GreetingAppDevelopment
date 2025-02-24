@@ -50,4 +50,16 @@ public class UserService {
     public Optional<UserEntity> getMessageById(Long id) {
         return repository.findById(id);
     }
+
+    //UC-07 Edit the greeting message in a list
+    public UserEntity editMessage(Long id, String message){
+        Optional<UserEntity> optionalUserEntity = repository.findById(id);
+        if(optionalUserEntity.isPresent()){
+            UserEntity userEntity = optionalUserEntity.get();
+            userEntity.setMessage(message);
+            return repository.save(userEntity);
+        }
+        else
+            return null;
+    }
 }

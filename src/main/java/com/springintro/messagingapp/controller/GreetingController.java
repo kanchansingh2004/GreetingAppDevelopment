@@ -81,4 +81,10 @@ public class GreetingController {
     public Optional<UserEntity> getGreetingById(@PathVariable Long id) {
         return userService.getMessageById(id);
     }
+
+    //UC-07 Edit greeting from a list
+    @PutMapping("/greeting/{id}")
+    public UserEntity updateGreeting(@PathVariable Long id, @RequestBody String message){
+        return userService.editMessage(id,message);
+    }
 }
