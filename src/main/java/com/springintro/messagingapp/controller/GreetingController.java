@@ -87,4 +87,10 @@ public class GreetingController {
     public UserEntity updateGreeting(@PathVariable Long id, @RequestBody String message){
         return userService.editMessage(id,message);
     }
+
+    //UC-08 Delete a Greeting message
+    @DeleteMapping("/greeting/{id}")
+    public void deleteMessage(@PathVariable Long id){
+        userService.deleteGreeting(id);
+    }
 }

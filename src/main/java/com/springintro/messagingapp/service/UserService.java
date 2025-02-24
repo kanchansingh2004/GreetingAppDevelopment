@@ -62,4 +62,9 @@ public class UserService {
         else
             return null;
     }
+
+    //UC-08 Delete a Greeting message by Id
+    public void deleteGreeting(Long id){
+        repository.deleteById(id);
+    }
 }
